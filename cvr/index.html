@@ -4,23 +4,31 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>CVR register</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="/project/css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     </head>
     <body>
         <main>
             <div class="jumbotron text-center">
-                <br><h2>CVR register</h2>
-
+                <div>
+                    <br><h2>CVR-register</h2>
+                </div>
             <div class="form-inline">
                 <div class="input-group">
-                    <select id="countryInput">
-                        <option></option>
-                        <option value="dk">DK</option>
-                        <option value="no">NO</option>
-                    </select>
-                    <input id="cvrInput" class="form-control" size="50" placeholder="Type cvr-nummer or p-nummer or company's">
+                    <div class="input-group mb-3">
 
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="optionInput">Options</label>
+                        </div>
+                        <select class="custom-select" id="optionInput">
+                            <option selected>-</option>
+                            <option value="dk">DK</option>
+                            <option value="no">NO</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input id="cvrInput" class="form-control" size="50" placeholder="cvr-nummer, p-nummer or company-name">
+                    </div>
                 </div>
                 <div class="input-group-btn">
                     <button  id="viewStudentsBtn" class="btn btn-danger">Submit</button>
@@ -53,7 +61,7 @@
                         $.ajax({
                             type: "GET",
                             dataType: "json",
-                            url: "https://cvrapi.dk/api?country=" + $('#countryInput').val() + "&version=6" + "&search=" + $('#cvrInput').val(), //https://cvrapi.dk/api?country=dk&search=legoland
+                            url: "https://cvrapi.dk/api?country=" + $('#optionInput').val() + "&version=6" + "&search=" + $('#cvrInput').val(), //https://cvrapi.dk/api?country=dk&search=legoland
                             success: function (data) {
                                 for (var x in data.owners) {
                                     $('<tr>').append(
