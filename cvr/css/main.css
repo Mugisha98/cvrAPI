@@ -5,6 +5,12 @@
 #viewStudentsBtn{
     margin-bottom: 20%;
 }
+.custom-select{
+    border: solid 2px;
+}
+#cvrInput {
+    border: solid 1px;
+}
 /** FOOTER **/
 .card-footer {
     padding: .75rem 1.25rem;

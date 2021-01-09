@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script src="js/index.js"></script>
     </head>
     <body>
         <header>
@@ -32,10 +33,6 @@
             <div class="form-inline">
                 <div class="input-group">
                     <div class="input-group mb-3">
-
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="optionInput">Options</label>
-                        </div>
                         <select class="custom-select" id="optionInput">
                             <option selected>-</option>
                             <option value="dk">DK</option>
@@ -70,37 +67,5 @@
                 <p>Made by with 🖤 by HMTech Inc</p>
             </div>
         </footer>
-        <script>
-                function cvrapi()
-                {
-                    $('#viewStudentsBtn').click( function () {
-                        $.ajax({
-                            type: "GET",
-                            dataType: "json",
-                            url: "https://cvrapi.dk/api?country=" + $('#optionInput').val() + "&version=6" + "&search=" + $('#cvrInput').val(), //https://cvrapi.dk/api?country=dk&search=legoland
-                            success: function (data) {
-                                for (var x in data.owners) {
-                                    $('<tr>').append(
-                                        $('<td>').text(data.vat),
-                                        $('<td>').text(data.name),
-                                        $('<td>').text(data.address + ", " + data.zipcode + " " + data.city),
-                                        $('<td>').text(data.owners[x].name),
-                                        $('<td>').text(data.industrydesc)
-                                    ).appendTo('#companyTable');
-                                }
-                            },
-                            error: function (err) {
-                                let error = `Bad request: ${err.status} - ${err.statusText}`;
-                                alert(error)
-                            }
-                        });
-                    });
-
-
-
-                };
-                cvrapi();
-
-        </script>
     </body>
 </html>
