@@ -3,6 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>CVR register</title>
+        <link rel="icon" href="img/hmTechInc.ico">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
@@ -29,13 +30,13 @@
                     <div>
                         <input id="cvrInput" class="form-control" size="50" placeholder="cvr-nummer, p-nummer or company-name">
                     </div>
+
                 </div>
                 <div class="input-group-btn">
                     <button  id="viewStudentsBtn" class="btn btn-danger">Submit</button>
                 </div>
             </div>
             </div>
-
             <div>
                 <table id="companyTable" class="table table-bordered">
                     <thead>
@@ -74,7 +75,7 @@
                                 }
                             },
                             error: function (err) {
-                                let error = `Ajax error: ${err.status} - ${err.statusText}`;
+                                let error = `Bad request: ${err.status} - ${err.statusText}`;
                                 alert(error)
                             }
                         });
